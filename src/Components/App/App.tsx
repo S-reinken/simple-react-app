@@ -6,14 +6,19 @@ import TextField from '../TextField/TextField';
 import './App.css';
 
 class App extends Component {
+
+  //Define state so typescript can recognize it
   state = {inputText: "", submitText: ""};
 
   constructor() {
       super({})
+
+      //React needs you to manually bind the correct "this" reference to the methods
       this.handleButtonClick = this.handleButtonClick.bind(this);
       this.handleInput = this.handleInput.bind(this);
   }
 
+  //Takes the text in the Text Box and submits it to the List Component through state
   handleButtonClick() {
       this.setState({
           submitText: this.state.inputText,
@@ -21,6 +26,7 @@ class App extends Component {
       });
   }
 
+  //Updates the state to reflect what is in the Text Box
   handleInput(input: string) {
       this.setState({
           inputText: input
@@ -31,11 +37,11 @@ class App extends Component {
     return (
       <div className="App">
         <header className="App-header">
-        <div>
-              <Button buttonText="Add to List" buttonClicked={this.handleButtonClick}/>
-              <TextField textChanged={this.handleInput}/>
+          <div>
+            <Button buttonText="Add to List" buttonClicked={this.handleButtonClick}/>
+            <TextField textChanged={this.handleInput}/>
           </div>
-          <List itemText={this.state.submitText}/>
+        <List itemText={this.state.submitText}/>
         </header>
       </div>
     );
