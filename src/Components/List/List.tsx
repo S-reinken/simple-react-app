@@ -34,7 +34,6 @@ class List extends Component<Props> {
         return (
             <div className="List">
                 <table>
-                    //The ability to return formatted html from JS calls is the primary advantage of JSX.
                     {this.state.items.map(i => {
                         return (<tr>{i}</tr>)
                     })}
